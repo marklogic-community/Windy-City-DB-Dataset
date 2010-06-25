@@ -1,5 +1,8 @@
-How to setup the WindyCityDB data for use in MarkLogic Server
+How to load the WindyCityDB data into MarkLogic 
 -------------------------------------------------------------
+
+If you're setting up the shared server, skip down to the section that
+starts with 'Setting up a server with multiple databases'.
 
 If you're here at the conference, you can skip this and just set up a client to point
 the shared server we're running.  But if you want to set up your own server, listen here:
@@ -34,7 +37,8 @@ http://localhost:8001 starting at http://developer.marklogic.com/learn/2009-01-g
 
 The port is that TCP/IP port of the XDBC server you've setup.
 
----------
+--------------------------------------------
+SETTING UP A SERVER WITH MULTIPLE DATABASES
 
 At the conference, we're actually setting up a single OS X server with multiple databases so each
 client can have its own.  To automate the setup of these databases, you can 
