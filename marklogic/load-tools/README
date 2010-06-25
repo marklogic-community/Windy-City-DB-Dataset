@@ -40,8 +40,8 @@ You'll want to drop a copy of xquery/dynamic_dispatch.xqy into /tmp/marklogic/dy
     % mkdir /tmp/marklogic
     % cp xquery/dynamic_dispatch.xqy /tmp/marklogic
 
-The setup-windy.xqy script also turn on some element range indexes that we know are needed by the specific
-app we're using today.  (TODO: make the scripts do this!)
+The setup-windy.xqy script also turns on a couple element range indexes that we know are needed by the specific
+app we're using today. 
 
 3. Next you'll want to load in the dataset.  We've have fast ways of doing this, but today we're just going
 to use a simple and safe mechanism.  We've got a loading script that can be used to load
