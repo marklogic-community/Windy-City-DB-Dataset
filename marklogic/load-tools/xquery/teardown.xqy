@@ -2,22 +2,18 @@ xquery version "1.0-ml";
 
 import module namespace admin = "http://marklogic.com/xdmp/admin" at "/MarkLogic/admin.xqy";
 
-let $src-dir := "/space/rundmc/"
-
 let $config := admin:get-configuration()
 let $forest-name := "windy-"
 let $database-name := "windy-"
 let $xdbc-server-name := "windy-xdbc-"
-let $xdbc-server-port := 1000
 let $http-server-name := "windy-"
-let $http-server-port := 9000
 
 let $http-server-root := '/tmp/marklogic/'
 
 let $groupid := admin:group-get-id($config, "Default")
 
 return (
-for $i in (2, 3, 4)
+for $i in (1, 2, 3, 4, 5, 6)
     let $forest-name := concat($forest-name, $i)
     let $database-name := concat($database-name, $i)
     let $http-server-name := concat($http-server-name, $i)
