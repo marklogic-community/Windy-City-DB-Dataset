@@ -1,0 +1,34 @@
+How to setup the WindyCityDB data for use in MarkLogic Server
+-------------------------------------------------------------
+
+If you're here at the conference, you can skip this and just set up a client to point
+the shared server we're running.  But if you want to set up your own server, listen here:
+
+1. We assume you've already installed MarkLogic Server on OS X and have a valid license.
+
+2. Next, you'll want to create a forest, database, xdbc server, and http server in MarkLogic.
+
+We have a couple tutorials that start at http://developer.marklogic.com/learn/2009-01-get-started-apps
+that will explain the basics of this if you want to set up your own copy of MarkLogic Server.
+
+At the conference, we're actually setting up a single server with multiple databases so each
+client can have its own.  To automate the setup of that, can drop the xquery/setup.xqy script into
+OSX /Library/MarkLogic/Admin/setup-windy.xqy and browse to http://localhost:8001/setup-windy.xqy, which 
+will create 6 databases (and the related forests and servers).  You can easily edit this script before running if you want
+more or less than 6.  No harm making extras today.
+
+The http servers will run at ports 9001, 9002, etc.
+The xdbc servers will run at ports 10001, 10002, 10003, etc.
+
+These scripts also turn on some element range indexes that we know are needed by the specific
+app we're using today.  (TODO: make the scripts do this!)
+
+3. Next you'll want to load in the dataset.  We've have fast ways of doing this, but today we're just going
+to use a simple and safe mechanism.  We've got a loading script that can be used to load
+the marklogic-mogrified version of the XML dataset into each database as:
+
+./load.sh 10001
+./load.sh 10002
+./load.sh 10003
+
+
