@@ -16,7 +16,7 @@ File.open(ARGV[0]) do |answers_file|
       tags = answer.root.attributes["Tags"].gsub(/["\[\]]/, "").split(",")
       answer_xml = <<BEGIN
   <answer xmlns="http://marklogic.com/windycity">
-    <id>#{answer.root.attributes["Id"].strip}</id>
+    <identifier>#{answer.root.attributes["Id"].strip}</identifier>
     <creation_date>#{answer.root.attributes["CreationDate"]}</creation_date>
     <owner_id>#{answer.root.attributes["OwnerUserId"]}</owner_id>
 <parent_id>#{answer.root.attributes["ParentId"]}</parent_id>

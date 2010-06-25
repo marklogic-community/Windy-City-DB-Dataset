@@ -15,7 +15,7 @@ File.open(ARGV[0]) do |comments_file|
       comment = REXML::Document.new(line)
       comment_xml = <<BEGIN
     <comment xmlns="http://marklogic.com/windycity">
-    <id>#{comment.root.attributes["Id"].strip}</id>
+    <identifier>#{comment.root.attributes["Id"].strip}</identifier>
     <creation_date>#{comment.root.attributes["CreationDate"]}</creation_date>
     <user_id>#{comment.root.attributes["UserId"]}</user_id>
     <post_id>#{comment.root.attributes["PostId"]}</post_id>
