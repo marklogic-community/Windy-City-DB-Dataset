@@ -8,7 +8,8 @@ the shared server we're running.  But if you want to set up your own server, lis
 
 2. Next, you'll want to create a forest, database, xdbc server, and http server in MarkLogic.
 
-We have a couple tutorials that teach you how to do this using the admin UI at http://localhost:8001 starting at http://developer.marklogic.com/learn/2009-01-get-started-apps 
+We have a couple tutorials that teach you how to do this using the admin UI at 
+http://localhost:8001 starting at http://developer.marklogic.com/learn/2009-01-get-started-apps 
 
 3. After that you'll want to unzip the data as
 
