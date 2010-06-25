@@ -10,11 +10,13 @@ the shared server we're running.  But if you want to set up your own server, lis
 
 We have a couple tutorials that teach you how to do this using the admin UI at http://localhost:8001 starting at http://developer.marklogic.com/learn/2009-01-get-started-apps 
 
-After that you'll want to unzip the data as
+3. After that you'll want to unzip the data as
 
    % unzip marklogic-data.zip
 
-and use the loading script to load the data in via the XDBC server as
+4. You'll then want to drop a copy of XXX into an app server and run it to create the range indexes needed .
+
+5. Then you can use the loading script to load the data in via the XDBC server as
 
     % load.sh [port]
 
@@ -22,28 +24,29 @@ The port is that TCP/IP port of the XDBC server you've setup.
 
 ---------
 
-At the conference, we're actually setting up a single server with multiple databases so each
-client can have its own.  To automate the setup of that, you can drop the xquery/setup.xqy script into
-OSX /Library/MarkLogic/Admin/setup-windy.xqy and browse to http://localhost:8001/setup-windy.xqy, which 
-will create 6 databases (and the related forests and servers).  You can easily edit this script before running if you want more or less than 6.  No harm making extras today.
+At the conference, we're actually setting up a single OS X server with multiple databases so each
+client can have its own.  To automate the setup of these databases, you can 
 
-The http servers will run at ports 9001, 9002, etc and will point to /tmp/marklogic as their root.
-The xdbc servers will run at ports 10001, 10002, 10003, etc.
+1. Drop the xquery/setup.xqy script into /Library/MarkLogic/Admin/setup-windy.xqy and 
+2. Browse to http://localhost:8001/setup-windy.xqy
 
-You'll want to drop a copy of XXX into /tmp/marklogic/dynamic_dispatch.xqy for use with the ActiveDocument client.
+This will create 6 databases (and the related forests and servers).  You can easily edit this script before running if you want more or less than 6.  No harm making extras today.
 
-These scripts also turn on some element range indexes that we know are needed by the specific
+    The http servers will run at ports 9001, 9002, etc and will point to /tmp/marklogic as their root.
+    The xdbc servers will run at ports 10001, 10002, 10003, etc.
+
+You'll want to drop a copy of xquery/dynamic_dispatch.xqy into /tmp/marklogic/dynamic_dispatch.xqy for use with the ActiveDocument client.
+
+    % mkdir /tmp/marklogic
+    % cp xquery/dynamic_dispatch.xqy /tmp/marklogic
+
+The setup-windy.xqy script also turn on some element range indexes that we know are needed by the specific
 app we're using today.  (TODO: make the scripts do this!)
 
 3. Next you'll want to load in the dataset.  We've have fast ways of doing this, but today we're just going
 to use a simple and safe mechanism.  We've got a loading script that can be used to load
 the marklogic-mogrified version of the XML dataset into each database as:
 
-./load.sh 10001
-./load.sh 10002
-./load.sh 10003
-.
-.
-.
-
-
+    % ./load.sh 10001
+    % ./load.sh 10002
+    % ./load.sh 10003
