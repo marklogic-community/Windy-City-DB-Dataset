@@ -14,10 +14,21 @@ We have a couple tutorials that teach you how to do this using the admin UI at h
 
    % unzip marklogic-data.zip
 
-4. You'll then want to drop a copy of XXX into an app server and run it to create the range indexes needed .
+4. You'll then want to use the admin UI to add 2 element range indexes to the DB.
 
-5. Then you can use the loading script to load the data in via the XDBC server as
+    type: dateTime
+    namespace: http://marklogic.com/windycity
+    element name: creation_date
 
+    type: string
+    namespace: http://marklogic.com/windycity
+    element name: tag
+
+5. Then you can unzip the marklogic copy of the data and use the loading script to load the data in via the XDBC server as
+
+    % cd ..
+    % unzip marklogic-data.zip
+    % cd loading-tools
     % load.sh [port]
 
 The port is that TCP/IP port of the XDBC server you've setup.
