@@ -1,0 +1,72 @@
+<h2>Post</h2>
+<table width="100%">
+  <tr>
+    <td valign="top"><b><span style="color:blue;">ID:</span></b></td>
+    <td valign="top"><%= @post.identifier.text %></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><span style="color:blue;">Creation Date:</span></b></td>
+    <td valign="top"><%= @post.creation_date.text %></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><span style="color:blue;">Owner:</span></b></td>
+    <td valign="top"><%= @post_owner.display_name.text %></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><span style="color:blue;">Body:</span></b></td>
+    <td valign="top"><%= @post.body.text %></td>
+  </tr>
+  <tr>
+    <td valign="top"><b><span style="color:blue;">Tags:</span></b></td>
+    <td valign="top">
+      <%- @post.tags.tag.each do |tag| %><%= tag %>&nbsp;
+      <%- end %></td>
+  </tr>
+
+  <hr/>
+</table>
+<h2>Answers</h2>
+<table width="100%">
+  <% @answers.sort {|a1, a2| a1.identifier.text.to_i <=> a2.identifier.text.to_i}.each do |answer| %>
+      <tr>
+        <td valign="top"><b><span style="color:blue;">ID:</span></b></td>
+        <td valign="top"><%= answer.identifier.text %></td>
+      </tr>
+      <tr>
+        <td valign="top"><b><span style="color:blue;">Creation Date:</span></b></td>
+        <td valign="top"><%= answer.creation_date.text %></td>
+      </tr>
+      <tr>
+        <td valign="top"><b><span style="color:blue;">Owner:</span></b></td>
+        <td valign="top"><%= answer.owner_id.text %></td>
+      </tr>
+      <tr>
+        <td valign="top"><b><span style="color:blue;">Body:</span></b></td>
+        <td valign="top"><%= answer.body.text %></td>
+      </tr>
+  <% end %>
+  <hr/>
+</table>
+
+<h2>Comments</h2>
+<table width="100%">
+  <% @comments.sort {|c1, c2| c1.identifier.text.to_i <=> c2.identifier.text.to_i}.each do |comment| %>
+      <tr>
+        <td valign="top"><b><span style="color:blue;">ID:</span></b></td>
+        <td valign="top"><%= comment.identifier.text %></td>
+      </tr>
+      <tr>
+        <td valign="top"><b><span style="color:blue;">Creation Date:</span></b></td>
+        <td valign="top"><%= comment.creation_date.text %></td>
+      </tr>
+      <tr>
+        <td valign="top"><b><span style="color:blue;">User:</span></b></td>
+        <td valign="top"><%= comment.user_id.text %></td>
+      </tr>
+      <tr>
+        <td valign="top"><b><span style="color:blue;">Body:</span></b></td>
+        <td valign="top"><%= comment.body.text %></td>
+      </tr>
+  <% end %>
+  <hr/>
+</table>
