@@ -43,6 +43,24 @@ for $i in (1, 2, 3, 4, 5, 6)
                 else $e
         }, 
         try {
+            let $range-index := admin:database-range-element-index("dateTime", "http://marklogic.com/windycity",
+                "creation_date", "http://marklogic.com/collation/", fn:false() )
+            let $re-config := admin:database-add-range-element-index($config, xdmp:database($database-name), $range-index)
+            let $status := admin:save-configuration-without-restart($re-config)
+            return "Succesfully added range element index"
+        } catch ($e) {
+            $e
+        }, 
+        try {
+            let $range-index := admin:database-range-element-index("string", "http://marklogic.com/windycity",
+                "tag", "http://marklogic.com/collation/", fn:false() )
+            let $re-config := admin:database-add-range-element-index($config, xdmp:database($database-name), $range-index)
+            let $status := admin:save-configuration-without-restart($re-config)
+            return "Succesfully added range element index"
+        } catch ($e) {
+            $e
+        }, 
+        try {
             let $forest-attach-config := admin:database-attach-forest($config,xdmp:database($database-name),xdmp:forest($forest-name))
             let $status := admin:save-configuration-without-restart($forest-attach-config)
             return string-join(("Succesfully attached",$forest-name,"to",$database-name)," ")
